@@ -2,25 +2,90 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --muted: #475569;
+  --teal-primary: #0f766e;
+  --teal-dark: #134e4a;
+  --leading-body: 1.65;
+  --leading-heading: 1.25;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: var(--leading-body);
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Healthcare-readable headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-serif {
+  font-family: var(--font-source-serif), ui-serif, Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+h1 {
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+p {
+  line-height: var(--leading-body);
+}
+
+/* Long-form medical content */
+.prose-medical {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.prose-medical p + p {
+  margin-top: 1rem;
+}
+
+.prose-medical strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* Accessible focus for keyboard users */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--teal-primary);
+  outline-offset: 2px;
 }

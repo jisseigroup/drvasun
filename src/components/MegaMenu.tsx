@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { MegaMenuSection, NavIconItem, NavIcon } from "@/lib/navigation";
-import { TreatmentIconBox } from "./TreatmentIconBox";
+import type { MegaMenuSection, NavIconItem } from "@/lib/navigation";
 
 function NavItemLink({
   item,
@@ -10,32 +9,24 @@ function NavItemLink({
   item: NavIconItem;
   onNavigate?: () => void;
 }) {
-  const Icon = item.icon as NavIcon;
   const isExternal =
     item.href.startsWith("http") ||
     item.href.startsWith("tel:") ||
     item.href.startsWith("mailto:");
 
   const className =
-    "group flex gap-3 rounded-lg px-2 py-2.5 transition hover:bg-teal-50";
+    "group block rounded-lg px-2 py-2.5 transition hover:bg-teal-50";
 
   const inner = (
     <>
-      <TreatmentIconBox
-        icon={Icon}
-        size={18}
-        className="h-9 w-9 rounded-lg bg-teal-50 transition group-hover:bg-teal-100"
-      />
-      <span className="min-w-0 flex-1">
-        <span className="block text-sm font-semibold text-slate-800 group-hover:text-teal-900">
-          {item.label}
-        </span>
-        {item.description ? (
-          <span className="mt-0.5 block text-xs leading-snug text-slate-500">
-            {item.description}
-          </span>
-        ) : null}
+      <span className="block text-sm font-semibold text-slate-800 group-hover:text-teal-900">
+        {item.label}
       </span>
+      {item.description ? (
+        <span className="mt-0.5 block text-xs leading-snug text-slate-500">
+          {item.description}
+        </span>
+      ) : null}
     </>
   );
 
@@ -77,33 +68,26 @@ export function MegaMenuPanel({
   if (variant === "mobile") {
     return (
       <div className="space-y-6">
-        {sections.map((section) => {
-          return (
-            <div key={section.title}>
-              <Link
-                href={section.href}
-                className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-900"
-                onClick={onNavigate}
-              >
-                <TreatmentIconBox
-                  icon={section.icon}
-                  size={18}
-                  className="h-8 w-8 rounded-lg bg-teal-50"
+        {sections.map((section) => (
+          <div key={section.title}>
+            <Link
+              href={section.href}
+              className="mb-3 block text-sm font-semibold text-slate-900"
+              onClick={onNavigate}
+            >
+              {section.title}
+            </Link>
+            <div>
+              {section.items.map((item) => (
+                <NavItemLink
+                  key={item.href + item.label}
+                  item={item}
+                  onNavigate={onNavigate}
                 />
-                {section.title}
-              </Link>
-              <div>
-                {section.items.map((item) => (
-                  <NavItemLink
-                    key={item.href + item.label}
-                    item={item}
-                    onNavigate={onNavigate}
-                  />
-                ))}
-              </div>
+              ))}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     );
   }
@@ -123,14 +107,9 @@ export function MegaMenuPanel({
           <div key={section.title} className="min-w-0">
             <Link
               href={section.href}
-              className="mb-2 flex items-center gap-2 border-b border-slate-100 pb-2 text-sm font-semibold text-teal-800 hover:text-teal-900"
+              className="mb-2 block border-b border-slate-100 pb-2 text-sm font-semibold text-teal-800 hover:text-teal-900"
               onClick={onNavigate}
             >
-              <TreatmentIconBox
-                icon={section.icon}
-                size={18}
-                className="h-8 w-8 shrink-0 rounded-lg bg-teal-50"
-              />
               {section.title}
             </Link>
             <div>

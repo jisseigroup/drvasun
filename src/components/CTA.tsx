@@ -5,7 +5,7 @@ export function CTA() {
   return (
     <section className="bg-teal-800 py-14 text-white">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="font-serif text-2xl font-bold sm:text-3xl">
+        <h2 className="font-serif text-2xl font-bold text-white sm:text-3xl">
           {siteConfig.tagline}
         </h2>
         <Link

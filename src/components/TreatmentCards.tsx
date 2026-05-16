@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { mainTreatments } from "@/lib/treatments";
-import { getTreatmentIcon } from "@/lib/treatment-icons";
-import { TreatmentIconBox } from "./TreatmentIconBox";
 
 export function TreatmentCards() {
   return (
@@ -17,32 +15,24 @@ export function TreatmentCards() {
           </p>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {mainTreatments.map((treatment) => {
-            const Icon = getTreatmentIcon(treatment.slug);
-            return (
-              <Link
-                key={treatment.slug}
-                href={`/${treatment.slug}`}
-                className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:border-teal-200 hover:shadow-md"
-              >
-                <TreatmentIconBox
-                  icon={Icon}
-                  size={28}
-                  className="h-14 w-14 rounded-xl bg-teal-50 transition group-hover:bg-teal-100"
-                />
-                <h3 className="mt-6 font-serif text-xl font-semibold text-slate-900">
-                  {treatment.title}
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
-                  {treatment.shortDescription}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-teal-700">
-                  Know More
-                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                </span>
-              </Link>
-            );
-          })}
+          {mainTreatments.map((treatment) => (
+            <Link
+              key={treatment.slug}
+              href={`/${treatment.slug}`}
+              className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:border-teal-200 hover:shadow-md"
+            >
+              <h3 className="font-serif text-xl font-semibold text-slate-900">
+                {treatment.title}
+              </h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
+                {treatment.shortDescription}
+              </p>
+              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-teal-700">
+                Know More
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

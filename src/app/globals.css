@@ -34,7 +34,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Healthcare-readable headings */
+/* Healthcare-readable headings (color set per section) */
 h1,
 h2,
 h3,
@@ -46,7 +46,14 @@ h6,
   font-weight: 600;
   line-height: var(--leading-heading);
   letter-spacing: -0.02em;
-  color: #0f172a;
+  color: var(--foreground);
+}
+
+/* Dark sections: headings inherit light text from parent */
+section.text-white :is(h1, h2, h3, h4, h5, h6),
+section[class*="from-teal-9"] :is(h1, h2, h3, h4, h5, h6),
+section.bg-teal-800 :is(h1, h2, h3, h4, h5, h6) {
+  color: inherit;
 }
 
 h1 {

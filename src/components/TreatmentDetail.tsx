@@ -8,8 +8,6 @@ import {
 } from "lucide-react";
 import type { Treatment } from "@/lib/treatments";
 import { getEarSubTreatments, getRelatedTreatments } from "@/lib/treatments";
-import { getTreatmentIcon } from "@/lib/treatment-icons";
-import { TreatmentIconBox } from "./TreatmentIconBox";
 import { CTA } from "./CTA";
 import { siteConfig } from "@/lib/site";
 
@@ -18,7 +16,6 @@ type TreatmentDetailProps = {
 };
 
 export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
-  const Icon = getTreatmentIcon(treatment.slug);
   const earSubs =
     treatment.slug === "ear-treatment" ? getEarSubTreatments() : [];
   const related = getRelatedTreatments(treatment.slug).filter(
@@ -29,20 +26,13 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
     <>
       <section className="border-b border-slate-100 bg-slate-50/80 py-10 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex max-w-4xl items-start gap-5">
-            <TreatmentIconBox
-              icon={Icon}
-              size={32}
-              className="h-14 w-14 rounded-xl bg-teal-100"
-            />
-            <div>
-              <p className="text-sm font-medium text-teal-700">
-                {siteConfig.name}
-              </p>
-              <p className="mt-2 text-lg leading-relaxed text-slate-600">
-                {treatment.description}
-              </p>
-            </div>
+          <div className="max-w-4xl">
+            <p className="text-sm font-medium text-teal-700">
+              {siteConfig.name}
+            </p>
+            <p className="mt-2 text-lg leading-relaxed text-slate-600">
+              {treatment.description}
+            </p>
           </div>
         </div>
       </section>
@@ -164,19 +154,12 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                 Related Treatments
               </h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {related.slice(0, 3).map((rel) => {
-                  const RelIcon = getTreatmentIcon(rel.slug);
-                  return (
+                {related.slice(0, 3).map((rel) => (
                     <Link
                       key={rel.slug}
                       href={`/${rel.slug}`}
                       className="group flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 transition hover:border-teal-200 hover:shadow-sm"
                     >
-                      <TreatmentIconBox
-                        icon={RelIcon}
-                        size={22}
-                        className="h-10 w-10 rounded-lg bg-teal-50"
-                      />
                       <span className="min-w-0 flex-1">
                         <span className="block font-medium text-slate-800 group-hover:text-teal-800">
                           {rel.title}
@@ -187,8 +170,7 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                       </span>
                       <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-teal-600" />
                     </Link>
-                  );
-                })}
+                ))}
               </div>
             </div>
           )}

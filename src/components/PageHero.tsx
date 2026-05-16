@@ -26,7 +26,7 @@ export function PageHero({ title, subtitle, breadcrumbs }: PageHeroProps) {
             ))}
           </nav>
         )}
-        <h1 className="font-serif text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <h1 className="font-serif text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
           {title}
         </h1>
         {subtitle && (

@@ -3,9 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTA } from "@/components/CTA";
-import { TreatmentIconBox } from "@/components/TreatmentIconBox";
 import { mainTreatments, earSubTreatments } from "@/lib/treatments";
-import { getTreatmentIcon } from "@/lib/treatment-icons";
 import { siteConfig } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -40,19 +38,12 @@ export default function TreatmentsPage() {
             treatment options, and when to seek care.
           </p>
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
-            {mainTreatments.map((treatment) => {
-              const Icon = getTreatmentIcon(treatment.slug);
-              return (
+            {mainTreatments.map((treatment) => (
                 <div
                   key={treatment.slug}
                   className="flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
                 >
-                  <TreatmentIconBox
-                    icon={Icon}
-                    size={24}
-                    className="h-12 w-12 rounded-xl bg-teal-50"
-                  />
-                  <h2 className="mt-4 font-serif text-xl font-semibold text-slate-900">
+                  <h2 className="font-serif text-xl font-semibold text-slate-900">
                     {treatment.title}
                   </h2>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
@@ -82,8 +73,7 @@ export default function TreatmentsPage() {
                     </ul>
                   )}
                 </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>

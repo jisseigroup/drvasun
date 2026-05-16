@@ -99,7 +99,6 @@ export function Header() {
                 );
               }
 
-              const Icon = entry.icon;
               return (
                 <div
                   key={entry.label}
@@ -112,7 +111,6 @@ export function Header() {
                     className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-teal-50 hover:text-teal-800"
                     onClick={closeMega}
                   >
-                    <Icon className="h-4 w-4 opacity-70" />
                     {entry.label}
                     <ChevronDown
                       className={`h-3.5 w-3.5 opacity-60 transition ${openMega === entry.label ? "rotate-180" : ""}`}
@@ -227,7 +225,6 @@ export function Header() {
                   );
                 }
 
-                const Icon = entry.icon;
                 const expanded = mobileExpanded === entry.label;
 
                 return (
@@ -240,10 +237,7 @@ export function Header() {
                       }
                       aria-expanded={expanded}
                     >
-                      <span className="flex items-center gap-3">
-                        <Icon className="h-5 w-5 text-teal-600" />
-                        {entry.label}
-                      </span>
+                      <span>{entry.label}</span>
                       <ChevronDown
                         className={`h-5 w-5 text-slate-400 transition ${expanded ? "rotate-180" : ""}`}
                       />

@@ -16,7 +16,7 @@ export function Hero() {
                 {siteConfig.tagline}
               </span>
             </p>
-            <h1 className="font-serif text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+            <h1 className="font-serif text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
               {siteConfig.name}
             </h1>
             <p className="mt-3 text-base font-medium text-teal-100 sm:mt-4 sm:text-lg">

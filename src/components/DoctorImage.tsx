@@ -16,7 +16,7 @@ const sizes = {
 
 const variantStyles = {
   hero:
-    "relative aspect-[3/4] w-[277px] shrink-0 overflow-hidden rounded-3xl bg-gradient-to-br from-white to-brand-50 shadow-2xl ring-1 ring-white/25 sm:w-[298px] md:w-[328px] lg:w-[351px]",
+    "relative mx-auto aspect-[3/4] w-[277px] shrink-0 overflow-hidden rounded-3xl bg-gradient-to-br from-white to-brand-50 shadow-2xl ring-1 ring-white/25 sm:w-[298px] md:mx-0 md:w-[328px] lg:w-[351px]",
   about:
     "relative mx-auto aspect-[3/4] w-full max-w-[min(100%,28rem)] overflow-hidden rounded-3xl bg-gradient-to-br from-brand-50 to-brand-100 shadow-lg sm:max-w-md",
   profile:

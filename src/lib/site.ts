@@ -21,6 +21,7 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/drvasunbatra/",
     youtube:
       "https://www.youtube.com/@dr.vasunbatraentsurgeon3881",
+    linkedin: "https://www.linkedin.com/in/drvasunbatra",
     maps: "https://maps.app.goo.gl/ULDkQSj2kdyr5RmdA",
   },
   mapsEmbed:

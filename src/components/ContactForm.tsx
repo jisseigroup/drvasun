@@ -51,11 +51,11 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-teal-200 bg-teal-50 p-8 text-center">
-        <p className="font-semibold text-teal-900">
+      <div className="rounded-2xl border border-brand-200 bg-brand-50 p-8 text-center">
+        <p className="font-semibold text-brand-900">
           Thank you for reaching out!
         </p>
-        <p className="mt-2 text-sm text-teal-700">
+        <p className="mt-2 text-sm text-brand-700">
           We will contact you shortly. For urgent matters, please call us
           directly.
         </p>
@@ -83,7 +83,7 @@ export function ContactForm() {
           type="text"
           required
           disabled={loading}
-          className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 disabled:opacity-60"
+          className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60"
         />
       </div>
       <div>
@@ -96,7 +96,7 @@ export function ContactForm() {
           type="tel"
           required
           disabled={loading}
-          className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 disabled:opacity-60"
+          className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60"
         />
       </div>
       <div>
@@ -109,7 +109,7 @@ export function ContactForm() {
           type="email"
           required
           disabled={loading}
-          className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 disabled:opacity-60"
+          className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60"
         />
       </div>
       <div>
@@ -122,13 +122,13 @@ export function ContactForm() {
           rows={4}
           required
           disabled={loading}
-          className="w-full resize-none rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 disabled:opacity-60"
+          className="w-full resize-none rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60"
         />
       </div>
       <button
         type="submit"
         disabled={loading}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-teal-700 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-teal-800 disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-700 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-800 disabled:opacity-60 sm:w-auto"
       >
         {loading ? "Sending…" : "Send Message"}
         <Send className="h-4 w-4" />

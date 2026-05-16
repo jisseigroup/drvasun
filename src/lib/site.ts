@@ -21,7 +21,13 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/drvasunbatra/",
     youtube:
       "https://www.youtube.com/@dr.vasunbatraentsurgeon3881",
-    maps: "https://goo.gl/maps/dxJeHuXkoNv872Pf8",
+    maps: "https://maps.app.goo.gl/ULDkQSj2kdyr5RmdA",
+  },
+  mapsEmbed:
+    "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6840.480602655897!2d77.4263378!3d28.619988000000003!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cefd52fc2555d%3A0xb86d4a308ba1bf5f!2sDr%20Vasun%20Batra%27s%20ENT%20Centre!5e1!3m2!1sen!2sin!4v1778940979677!5m2!1sen!2sin",
+  geo: {
+    latitude: 28.619988,
+    longitude: 77.4263378,
   },
   credit: {
     name: "AUOTAM",

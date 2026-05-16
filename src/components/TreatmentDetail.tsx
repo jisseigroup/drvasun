@@ -28,7 +28,7 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
       <section className="border-b border-slate-100 bg-slate-50/80 py-10 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            <p className="text-sm font-medium text-teal-700">
+            <p className="text-sm font-medium text-brand-700">
               {siteConfig.name}
             </p>
             <p className="mt-2 text-lg leading-relaxed text-slate-600">
@@ -41,9 +41,9 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h2 className="flex items-center gap-2 font-serif text-2xl font-bold text-slate-900">
-              <Stethoscope className="h-6 w-6 text-teal-600" />
-              Overview
+            <h2 className="flex min-w-0 items-start gap-2 font-serif text-2xl font-bold text-slate-900 sm:items-center">
+              <Stethoscope className="mt-1 h-6 w-6 shrink-0 text-brand-600 sm:mt-0" />
+              <span className="min-w-0">Overview</span>
             </h2>
             <div className="prose-medical mt-5 space-y-4">
               {treatment.overview.map((paragraph) => (
@@ -76,7 +76,7 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
           <div className="mt-14 grid gap-8 lg:grid-cols-2">
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
               <h2 className="flex items-center gap-2 font-serif text-xl font-semibold text-slate-900">
-                <AlertCircle className="h-5 w-5 text-teal-600" />
+                <AlertCircle className="h-5 w-5 text-brand-600" />
                 Common Symptoms
               </h2>
               <ul className="mt-5 space-y-3">
@@ -85,7 +85,7 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                     key={symptom}
                     className="flex items-start gap-3 text-sm text-slate-600"
                   >
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
                     {symptom}
                   </li>
                 ))}
@@ -93,7 +93,7 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             </div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
               <h2 className="flex items-center gap-2 font-serif text-xl font-semibold text-slate-900">
-                <ClipboardList className="h-5 w-5 text-teal-600" />
+                <ClipboardList className="h-5 w-5 text-brand-600" />
                 Treatment Options
               </h2>
               <ul className="mt-5 space-y-3">
@@ -102,7 +102,7 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                     key={item}
                     className="flex items-start gap-3 text-sm text-slate-600"
                   >
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
                     {item}
                   </li>
                 ))}
@@ -110,17 +110,17 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             </div>
           </div>
 
-          <div className="mt-14 rounded-2xl border border-teal-100 bg-teal-50/60 p-8">
-            <h2 className="font-serif text-xl font-semibold text-teal-900">
+          <div className="mt-14 rounded-2xl border border-brand-100 bg-brand-50/60 p-8">
+            <h2 className="font-serif text-xl font-semibold text-brand-900">
               When to See a Doctor
             </h2>
             <ul className="mt-4 space-y-2">
               {treatment.whenToVisit.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2 text-sm text-teal-900/90"
+                  className="flex items-start gap-2 text-sm text-brand-900/90"
                 >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
                   {item}
                 </li>
               ))}
@@ -137,12 +137,12 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                   <Link
                     key={sub.slug}
                     href={`/${sub.slug}`}
-                    className="group flex items-center justify-between rounded-xl border border-slate-200 bg-white p-5 transition hover:border-teal-200 hover:shadow-sm"
+                    className="group flex items-center justify-between rounded-xl border border-slate-200 bg-white p-5 transition hover:border-brand-200 hover:shadow-sm"
                   >
                     <span className="font-medium text-slate-800">
                       {sub.title}
                     </span>
-                    <ArrowRight className="h-4 w-4 text-teal-600 transition group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 text-brand-600 transition group-hover:translate-x-1" />
                   </Link>
                 ))}
               </div>
@@ -159,17 +159,17 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                     <Link
                       key={rel.slug}
                       href={`/${rel.slug}`}
-                      className="group flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 transition hover:border-teal-200 hover:shadow-sm"
+                      className="group flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 transition hover:border-brand-200 hover:shadow-sm"
                     >
                       <span className="min-w-0 flex-1">
-                        <span className="block font-medium text-slate-800 group-hover:text-teal-800">
+                        <span className="block font-medium text-slate-800 group-hover:text-brand-800">
                           {rel.title}
                         </span>
                         <span className="mt-1 block text-xs text-slate-500 line-clamp-2">
                           {rel.shortDescription}
                         </span>
                       </span>
-                      <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-teal-600" />
+                      <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-brand-600" />
                     </Link>
                 ))}
               </div>

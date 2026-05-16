@@ -4,8 +4,9 @@
   --background: #ffffff;
   --foreground: #0f172a;
   --muted: #475569;
-  --teal-primary: #0f766e;
-  --teal-dark: #134e4a;
+  --brand-primary: #b42a03;
+  --brand-dark: #7a1d03;
+  --brand-light: #fdf4f2;
   --leading-body: 1.65;
   --leading-heading: 1.25;
 }
@@ -15,12 +16,30 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
+
+  --color-brand-50: #fdf4f2;
+  --color-brand-100: #fce8e3;
+  --color-brand-200: #f5cfc6;
+  --color-brand-300: #e8a090;
+  --color-brand-400: #d96a52;
+  --color-brand-500: #c94520;
+  --color-brand-600: #b42a03;
+  --color-brand-700: #962304;
+  --color-brand-800: #7a1d03;
+  --color-brand-900: #5c1602;
+  --color-brand-950: #3d0f01;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -32,16 +51,16 @@ body {
   font-weight: 400;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
-/* Healthcare-readable headings (color set per section) */
+/* Serif typography (color set per component / section) */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-.font-serif {
+h6 {
   font-family: var(--font-source-serif), ui-serif, Georgia, "Times New Roman", serif;
   font-weight: 600;
   line-height: var(--leading-heading);
@@ -49,10 +68,15 @@ h6,
   color: var(--foreground);
 }
 
-/* Dark sections: headings inherit light text from parent */
+.font-serif {
+  font-family: var(--font-source-serif), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* Dark sections & footer: headings inherit light text from parent */
 section.text-white :is(h1, h2, h3, h4, h5, h6),
-section[class*="from-teal-9"] :is(h1, h2, h3, h4, h5, h6),
-section.bg-teal-800 :is(h1, h2, h3, h4, h5, h6) {
+section[class*="from-brand-9"] :is(h1, h2, h3, h4, h5, h6),
+section.bg-brand-800 :is(h1, h2, h3, h4, h5, h6),
+footer :is(h1, h2, h3, h4, h5, h6) {
   color: inherit;
 }
 
@@ -93,6 +117,6 @@ p {
 /* Accessible focus for keyboard users */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--teal-primary);
+  outline: 2px solid var(--brand-primary);
   outline-offset: 2px;
 }

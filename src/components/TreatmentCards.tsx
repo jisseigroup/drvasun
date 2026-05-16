@@ -19,7 +19,7 @@ export function TreatmentCards() {
             <Link
               key={treatment.slug}
               href={`/${treatment.slug}`}
-              className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:border-teal-200 hover:shadow-md"
+              className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:border-brand-200 hover:shadow-md"
             >
               <h3 className="font-serif text-xl font-semibold text-slate-900">
                 {treatment.title}
@@ -27,7 +27,7 @@ export function TreatmentCards() {
               <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
                 {treatment.shortDescription}
               </p>
-              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-teal-700">
+              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
                 Know More
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </span>

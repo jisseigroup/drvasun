@@ -15,11 +15,11 @@ function NavItemLink({
     item.href.startsWith("mailto:");
 
   const className =
-    "group block rounded-lg px-2 py-2.5 transition hover:bg-teal-50";
+    "group block rounded-lg px-2 py-2.5 transition hover:bg-brand-50";
 
   const inner = (
     <>
-      <span className="block text-sm font-semibold text-slate-800 group-hover:text-teal-900">
+      <span className="block text-sm font-semibold text-slate-800 group-hover:text-brand-900">
         {item.label}
       </span>
       {item.description ? (
@@ -107,7 +107,7 @@ export function MegaMenuPanel({
           <div key={section.title} className="min-w-0">
             <Link
               href={section.href}
-              className="mb-2 block border-b border-slate-100 pb-2 text-sm font-semibold text-teal-800 hover:text-teal-900"
+              className="mb-2 block border-b border-slate-100 pb-2 text-sm font-semibold text-brand-800 hover:text-brand-900"
               onClick={onNavigate}
             >
               {section.title}
@@ -127,7 +127,7 @@ export function MegaMenuPanel({
       <div className="mt-3 flex justify-end border-t border-slate-100 pt-3">
         <Link
           href={viewAllHref}
-          className="inline-flex items-center gap-1 text-sm font-semibold text-teal-700 hover:text-teal-800"
+          className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800"
           onClick={onNavigate}
         >
           {viewAllLabel}

@@ -19,8 +19,8 @@ export default function PrivacyPage() {
           { label: "Privacy Policy" },
         ]}
       />
-      <section className="py-14">
-        <div className="mx-auto max-w-3xl space-y-4 px-4 text-slate-600 leading-relaxed sm:px-6 lg:px-8">
+      <section className="py-14 sm:py-16">
+        <div className="prose-medical mx-auto max-w-3xl space-y-4 px-4 sm:px-6 lg:px-8">
           <p>
             {siteConfig.name} respects your privacy. Information you provide
             through our contact form (name, mobile, email, and health concern)
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
             For questions about this policy, contact us at{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-teal-700 hover:underline"
+              className="text-brand-700 hover:underline"
             >
               {siteConfig.email}
             </a>

@@ -3,7 +3,7 @@ import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { ScrollOnNavigate } from "@/components/ScrollOnNavigate";
 import { JsonLd } from "@/components/JsonLd";
 import { physicianJsonLd, siteMetadata } from "@/lib/seo";
 import "./globals.css";
@@ -27,7 +27,7 @@ export const metadata: Metadata = siteMetadata;
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0f766e",
+  themeColor: "#b42a03",
 };
 
 export default function RootLayout({
@@ -45,7 +45,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <ScrollToTop />
+        <ScrollOnNavigate />
         <FloatingActions />
       </body>
     </html>

@@ -49,11 +49,11 @@ export default function AboutPage() {
               <p key={p.slice(0, 40)}>{p}</p>
             ))}
           </div>
-          <div className="mt-12 rounded-2xl border border-teal-100 bg-teal-50 p-8">
-            <h2 className="font-serif text-xl font-semibold text-teal-900">
+          <div className="mt-12 rounded-2xl border border-brand-100 bg-brand-50 p-8">
+            <h2 className="font-serif text-xl font-semibold text-brand-900">
               Affiliations
             </h2>
-            <ul className="mt-4 space-y-2 text-sm text-teal-800">
+            <ul className="mt-4 space-y-2 text-sm text-brand-800">
               <li>Dr. Vasun Batra&apos;s ENT Centre — Greater Noida West</li>
               <li>Visiting Consultant — Jaypee Hospital, Noida</li>
               <li>Visiting Consultant — Sarvodaya Hospital, Greater Noida</li>

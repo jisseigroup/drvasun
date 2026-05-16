@@ -18,6 +18,7 @@ import {
   Waves,
 } from "lucide-react";
 import { NoseIcon, ThroatIcon } from "@/components/icons/EntIcons";
+import { siteConfig } from "@/lib/site";
 import type { ComponentType, SVGProps } from "react";
 
 export type NavIcon = LucideIcon | ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
@@ -186,7 +187,7 @@ export const mobileExtras: NavIconItem[] = [
     icon: Mail,
   },
   {
-    href: "https://goo.gl/maps/dxJeHuXkoNv872Pf8",
+    href: siteConfig.social.maps,
     label: "Directions",
     icon: MapPin,
   },

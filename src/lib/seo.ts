@@ -274,8 +274,8 @@ export function physicianJsonLd() {
         },
         geo: {
           "@type": "GeoCoordinates",
-          latitude: 28.4744,
-          longitude: 77.504,
+          latitude: siteConfig.geo.latitude,
+          longitude: siteConfig.geo.longitude,
         },
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",

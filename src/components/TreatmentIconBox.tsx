@@ -16,7 +16,7 @@ export function TreatmentIconBox({
   return (
     <span
       className={cn(
-        "inline-flex shrink-0 items-center justify-center text-teal-700",
+        "inline-flex shrink-0 items-center justify-center text-brand-700",
         className,
       )}
     >

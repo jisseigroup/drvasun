@@ -43,7 +43,7 @@ export default function TreatmentsPage() {
             ENT conditions. Select a category below to learn about symptoms,
             treatment options, and when to seek care.
           </p>
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {mainTreatments.map((treatment) => (
                 <div
                   key={treatment.slug}
@@ -60,7 +60,7 @@ export default function TreatmentsPage() {
                   </p>
                   <Link
                     href={`/${treatment.slug}`}
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-700"
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700"
                   >
                     Learn more <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -70,7 +70,7 @@ export default function TreatmentsPage() {
                         <li key={sub.slug}>
                           <Link
                             href={`/${sub.slug}`}
-                            className="text-sm text-slate-600 hover:text-teal-700"
+                            className="text-sm text-slate-600 hover:text-brand-700"
                           >
                             {sub.title}
                           </Link>

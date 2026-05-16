@@ -5,44 +5,47 @@ import { DoctorImage } from "./DoctorImage";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100dvh-4.5rem)] items-center overflow-hidden bg-gradient-to-br from-teal-900 via-teal-800 to-cyan-900 text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.08)_0%,_transparent_50%)]" />
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-        <div className="grid items-center gap-8 md:grid-cols-[1fr_auto] md:gap-10 lg:gap-12">
-          <div className="min-w-0">
-            <p className="mb-3 inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur-sm sm:mb-4 sm:px-4 sm:py-1.5 sm:text-sm">
-              <Stethoscope className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+    <section
+      data-surface="dark"
+      className="relative flex min-h-[100dvh] flex-col overflow-x-clip bg-gradient-to-br from-brand-900 via-brand-800 to-brand-950 text-white pt-24 sm:pt-[4.5rem] supports-[min-height:100svh]:min-h-[100svh]"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.08)_0%,_transparent_50%)]" />
+      <div className="relative flex flex-1 items-center justify-center px-4 pb-10 pt-4 sm:px-6 sm:pb-12 sm:pt-0 lg:px-8">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center justify-items-center gap-8 sm:gap-10 lg:w-fit lg:max-w-full lg:grid-cols-[auto_auto] lg:justify-items-stretch lg:gap-12 xl:gap-16 2xl:gap-20">
+          <div className="w-full max-w-[24rem] text-center text-[110%] sm:max-w-[26rem] lg:text-left">
+            <p className="mb-3 inline-flex max-w-full items-center gap-2 rounded-full bg-white px-3 py-1.5 text-sm font-medium text-brand-600 sm:mb-4 sm:px-4 sm:py-2 sm:text-base">
+              <Stethoscope className="h-4 w-4 shrink-0 text-brand-600" />
               <span className="line-clamp-2 sm:line-clamp-none">
                 {siteConfig.tagline}
               </span>
             </p>
-            <h1 className="font-serif text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h1 className="font-serif text-[clamp(2rem,5vw,3.75rem)] font-bold leading-tight tracking-tight text-white">
               {siteConfig.name}
             </h1>
-            <p className="mt-3 text-base font-medium text-teal-100 sm:mt-4 sm:text-lg">
+            <p className="mt-2 text-lg font-medium text-brand-100 sm:mt-3 sm:text-xl">
               {siteConfig.credentials}
             </p>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-teal-50/90 sm:mt-6 sm:text-base">
+            <p className="mx-auto mt-3 max-w-[26rem] text-base leading-relaxed text-brand-50/90 sm:mt-4 sm:max-w-[28rem] sm:text-lg lg:mx-0">
               Expert ENT care for ear, nose, and throat — compassionate treatment
               for patients across Noida and Delhi NCR.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
+            <div className="mt-5 flex flex-wrap justify-center gap-3 sm:mt-6 sm:gap-4 lg:justify-start">
               <Link
                 href="/contact-us"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-teal-900 shadow-lg transition hover:bg-teal-50 sm:px-6 sm:py-3"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-base font-semibold text-brand-900 shadow-lg transition hover:bg-brand-50 sm:px-6 sm:py-3"
               >
                 Book Appointment
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/dr-vasun-batra"
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 sm:px-6 sm:py-3"
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-2.5 text-base font-semibold text-white transition hover:bg-white/10 sm:px-6 sm:py-3"
               >
                 Know More
               </Link>
             </div>
           </div>
-          <DoctorImage variant="hero" priority />
+          <DoctorImage variant="hero" priority className="mx-auto lg:mx-0" />
         </div>
       </div>
     </section>

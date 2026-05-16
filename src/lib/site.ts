@@ -17,7 +17,7 @@ export const siteConfig = {
     full: "Shop no. 141, First floor Mahagun Mywoods Mart, Sector 16C, Greater Noida West, Gautam Buddha Nagar",
   },
   social: {
-    facebook: "https://www.facebook.com/profile.php",
+    facebook: "https://www.facebook.com/drvasunbatra",
     instagram: "https://www.instagram.com/drvasunbatra/",
     youtube:
       "https://www.youtube.com/@dr.vasunbatraentsurgeon3881",

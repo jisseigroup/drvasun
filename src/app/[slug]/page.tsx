@@ -2,12 +2,19 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { TreatmentDetail } from "@/components/TreatmentDetail";
+import { JsonLd } from "@/components/JsonLd";
 import {
   getTreatmentBySlug,
   mainTreatments,
   earSubTreatments,
 } from "@/lib/treatments";
-import { pageMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
+import {
+  localSeoTitle,
+  pageMetadata,
+  treatmentPageJsonLd,
+  type BreadcrumbItem,
+} from "@/lib/seo";
 
 const allTreatments = [...mainTreatments, ...earSubTreatments];
 const treatmentSlugs = new Set(allTreatments.map((t) => t.slug));
@@ -22,15 +29,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const treatment = getTreatmentBySlug(slug);
   if (!treatment) return {};
-  const description =
-    treatment.overview[0]?.slice(0, 155) ?? treatment.shortDescription;
+
+  const description = `${treatment.shortDescription} Consult ${siteConfig.name}, ENT specialist in Greater Noida West, Noida & Delhi NCR.`.slice(
+    0,
+    160,
+  );
+
   const keywords = [
     treatment.title,
     `${treatment.title} Noida`,
+    `${treatment.title} Greater Noida West`,
     "ENT specialist",
   ];
+
   return pageMetadata({
-    title: treatment.title,
+    title: localSeoTitle(treatment.title),
     description,
     path: `/${slug}`,
     keywords,
@@ -46,7 +59,7 @@ export default async function TreatmentSlugPage({ params }: Props) {
       ? { label: "Ear Treatment", href: "/ear-treatment" }
       : null;
 
-  const breadcrumbs = [
+  const breadcrumbs: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
     { label: "Treatments", href: "/treatments" },
     ...(parent ? [parent] : []),
@@ -55,8 +68,9 @@ export default async function TreatmentSlugPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd data={treatmentPageJsonLd(treatment, slug, breadcrumbs)} />
       <PageHero
-        title={treatment.title}
+        title={localSeoTitle(treatment.title)}
         subtitle={treatment.shortDescription}
         breadcrumbs={breadcrumbs}
       />

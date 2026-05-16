@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "./site";
+import type { Treatment } from "./treatments";
 
 export const defaultKeywords = [
   "ENT specialist Noida",
@@ -12,6 +13,52 @@ export const defaultKeywords = [
   "best ENT specialist near me",
   "ENT clinic Greater Noida",
 ] as const;
+
+export const defaultOgImage = {
+  url: "/images/dr-vasun-batra.png",
+  width: 800,
+  height: 1000,
+  alt: `${siteConfig.name} — ENT Specialist in Noida (Delhi NCR)`,
+} as const;
+
+const locationLabel = "Noida (Delhi NCR)";
+
+/** Canonical path with trailing slash (matches next.config trailingSlash). */
+export function canonicalPath(path: string): string {
+  if (!path || path === "/") return "/";
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return normalized.endsWith("/") ? normalized : `${normalized}/`;
+}
+
+export function absoluteUrl(path: string): string {
+  if (path.endsWith(".xml") || path.endsWith(".txt")) {
+    const normalized = path.startsWith("/") ? path : `/${path}`;
+    return `${siteConfig.url}${normalized}`;
+  }
+  return `${siteConfig.url}${canonicalPath(path)}`;
+}
+
+/** Append local area to page titles when not already present. */
+export function localSeoTitle(title: string): string {
+  const lower = title.toLowerCase();
+  if (
+    lower.includes("noida") ||
+    lower.includes("delhi ncr") ||
+    lower.includes("greater noida")
+  ) {
+    return title;
+  }
+  return `${title} in ${locationLabel}`;
+}
+
+function ogImages() {
+  return [
+    {
+      ...defaultOgImage,
+      url: defaultOgImage.url,
+    },
+  ];
+}
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -46,11 +93,13 @@ export const siteMetadata: Metadata = {
     siteName: siteConfig.name,
     title: siteConfig.title,
     description: siteConfig.description,
+    images: ogImages(),
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [defaultOgImage.url],
   },
   other: {
     "geo.region": "IN-UP",
@@ -69,25 +118,103 @@ export function pageMetadata({
   path: string;
   keywords?: string[];
 }): Metadata {
-  const url = `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
+  const canonical = canonicalPath(path);
+  const url = absoluteUrl(path);
+  const fullTitle = `${title} | ${siteConfig.name}`;
+
   return {
     title,
     description,
     keywords: [...defaultKeywords, ...keywords],
-    alternates: { canonical: path },
+    alternates: { canonical },
     openGraph: {
-      title: `${title} | ${siteConfig.name}`,
+      title: fullTitle,
       description,
       url,
       type: "website",
       locale: "en_IN",
       siteName: siteConfig.name,
+      images: ogImages(),
     },
     twitter: {
-      card: "summary",
-      title: `${title} | ${siteConfig.name}`,
+      card: "summary_large_image",
+      title: fullTitle,
       description,
+      images: [defaultOgImage.url],
     },
+  };
+}
+
+export type BreadcrumbItem = {
+  label: string;
+  href?: string;
+};
+
+export function jsonLdGraph(...nodes: Record<string, unknown>[]) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": nodes,
+  };
+}
+
+export function breadcrumbJsonLd(items: BreadcrumbItem[]) {
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      ...(item.href
+        ? { item: absoluteUrl(item.href) }
+        : {}),
+    })),
+  };
+}
+
+export function treatmentPageJsonLd(
+  treatment: Treatment,
+  slug: string,
+  breadcrumbs: BreadcrumbItem[],
+) {
+  const url = absoluteUrl(`/${slug}`);
+  const graph: Record<string, unknown>[] = [
+    breadcrumbJsonLd(breadcrumbs),
+    {
+      "@type": "MedicalWebPage",
+      "@id": `${url}#webpage`,
+      url,
+      name: localSeoTitle(treatment.title),
+      description: treatment.shortDescription,
+      inLanguage: "en-IN",
+      isPartOf: { "@id": `${siteConfig.url}/#website` },
+      about: {
+        "@type": "MedicalTherapy",
+        name: treatment.title,
+      },
+      author: { "@id": `${siteConfig.url}/#physician` },
+      publisher: { "@id": `${siteConfig.url}/#physician` },
+      provider: { "@id": `${siteConfig.url}/#clinic` },
+    },
+  ];
+
+  if (treatment.whenToVisit.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: treatment.whenToVisit.map((item) => ({
+        "@type": "Question",
+        name: item.endsWith("?") ? item : `${item}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Consult ${siteConfig.name}, ENT specialist in Greater Noida West (Noida, Delhi NCR), for evaluation and appropriate treatment.`,
+        },
+      })),
+    });
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": graph,
   };
 }
 
@@ -102,7 +229,7 @@ export function physicianJsonLd() {
         name: siteConfig.name,
         description: siteConfig.description,
         url: siteConfig.url,
-        image: `${siteConfig.url}/images/dr-vasun-batra.png`,
+        image: `${siteConfig.url}${defaultOgImage.url}`,
         medicalSpecialty: "Otolaryngologic",
         knowsAbout: [
           "Ear diseases",
@@ -116,6 +243,12 @@ export function physicianJsonLd() {
         })),
         telephone: phone,
         email: siteConfig.email,
+        sameAs: [
+          siteConfig.social.instagram,
+          siteConfig.social.youtube,
+          siteConfig.social.maps,
+          siteConfig.social.facebook,
+        ].filter(Boolean),
         worksFor: {
           "@id": `${siteConfig.url}/#clinic`,
         },
@@ -127,6 +260,7 @@ export function physicianJsonLd() {
         description:
           "ENT clinic offering ear, nose, and throat treatment in Greater Noida West, Delhi NCR.",
         url: siteConfig.url,
+        image: `${siteConfig.url}${defaultOgImage.url}`,
         telephone: phone,
         email: siteConfig.email,
         address: {
@@ -158,6 +292,7 @@ export function physicianJsonLd() {
         },
         priceRange: "$$",
         medicalSpecialty: "Otolaryngologic",
+        sameAs: [siteConfig.social.maps],
       },
       {
         "@type": "WebSite",

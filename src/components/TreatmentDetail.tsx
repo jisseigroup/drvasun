@@ -9,6 +9,7 @@ import {
 import type { Treatment } from "@/lib/treatments";
 import { getEarSubTreatments, getRelatedTreatments } from "@/lib/treatments";
 import { CTA } from "./CTA";
+import { MedicalDisclaimer } from "./MedicalDisclaimer";
 import { siteConfig } from "@/lib/site";
 
 type TreatmentDetailProps = {
@@ -175,7 +176,7 @@ export function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             </div>
           )}
 
-
+          <MedicalDisclaimer />
         </div>
       </section>
       <CTA />

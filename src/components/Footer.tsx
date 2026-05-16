@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { siteConfig, aboutBioShort } from "@/lib/site";
+import { mainTreatments } from "@/lib/treatments";
 
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/dr-vasun-batra", label: "Dr Vasun Batra" },
-  { href: "/ear-treatment", label: "Ear Treatment" },
-  { href: "/throat-treatment", label: "Throat Treatment" },
+  { href: "/treatments", label: "All Treatments" },
+  ...mainTreatments.map((t) => ({
+    href: `/${t.slug}`,
+    label: t.title,
+  })),
   { href: "/contact-us", label: "Contact Us" },
 ];
 
@@ -72,6 +76,16 @@ export function Footer() {
                 className="hover:text-teal-400"
               >
                 {siteConfig.email}
+              </a>
+            </p>
+            <p>
+              <a
+                href={siteConfig.social.maps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-teal-400 hover:underline"
+              >
+                View on Google Maps
               </a>
             </p>
           </div>

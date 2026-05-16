@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { JsonLd } from "@/components/JsonLd";
-import { siteMetadata } from "@/lib/seo";
+import { physicianJsonLd, siteMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -41,7 +41,7 @@ export default function RootLayout({
       className={`${sourceSans.variable} ${sourceSerif.variable}`}
     >
       <body className="min-h-screen bg-white font-sans text-slate-900 antialiased">
-        <JsonLd />
+        <JsonLd data={physicianJsonLd()} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

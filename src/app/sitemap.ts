@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl } from "@/lib/seo";
 import { mainTreatments, earSubTreatments } from "@/lib/treatments";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = siteConfig.url;
   const staticPages = [
-    "",
+    "/",
     "/dr-vasun-batra",
     "/treatments",
     "/contact-us",
@@ -17,9 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   return [...staticPages, ...treatmentPages].map((path) => ({
-    url: `${base}${path}`,
+    url: absoluteUrl(path),
     lastModified: new Date(),
-    changeFrequency: path === "" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : 0.8,
+    changeFrequency: path === "/" ? "weekly" : "monthly",
+    priority: path === "/" ? 1 : path === "/treatments" ? 0.9 : 0.8,
   }));
 }

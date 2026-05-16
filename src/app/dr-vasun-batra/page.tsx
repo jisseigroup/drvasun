@@ -4,11 +4,22 @@ import { Stats } from "@/components/Stats";
 import { CTA } from "@/components/CTA";
 import { DoctorImage } from "@/components/DoctorImage";
 import { siteConfig, aboutBio } from "@/lib/site";
-import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import {
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  localSeoTitle,
+  pageMetadata,
+} from "@/lib/seo";
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "About" },
+];
 
 export const metadata: Metadata = pageMetadata({
-  title: `About ${siteConfig.name} — ENT Surgeon`,
-  description: aboutBio.slice(0, 155),
+  title: localSeoTitle(`About ${siteConfig.name} — ENT Surgeon`),
+  description: `${aboutBio.slice(0, 140)}… Leading ENT surgeon in Greater Noida West & Noida.`,
   path: "/dr-vasun-batra",
   keywords: [
     "ENT surgeon biography",
@@ -22,13 +33,11 @@ export default function AboutPage() {
 
   return (
     <>
+      <JsonLd data={jsonLdGraph(breadcrumbJsonLd(breadcrumbs))} />
       <PageHero
         title={siteConfig.name}
         subtitle={siteConfig.credentials}
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "About" },
-        ]}
+        breadcrumbs={breadcrumbs}
       />
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">

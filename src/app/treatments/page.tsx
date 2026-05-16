@@ -5,10 +5,11 @@ import { PageHero } from "@/components/PageHero";
 import { CTA } from "@/components/CTA";
 import { mainTreatments, earSubTreatments } from "@/lib/treatments";
 import { siteConfig } from "@/lib/site";
-import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, jsonLdGraph, localSeoTitle, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "ENT Treatments — Ear, Nose & Throat",
+  title: localSeoTitle("ENT Treatments — Ear, Nose & Throat"),
   description: `Explore ENT treatments at ${siteConfig.name}: ear infections, sinusitis, tonsillitis, tinnitus, and more. Expert care in Greater Noida West, Delhi NCR.`,
   path: "/treatments",
   keywords: [
@@ -19,16 +20,21 @@ export const metadata: Metadata = pageMetadata({
   ],
 });
 
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Treatments" },
+];
+
 export default function TreatmentsPage() {
   return (
     <>
+      <JsonLd
+        data={jsonLdGraph(breadcrumbJsonLd(breadcrumbs))}
+      />
       <PageHero
-        title="Treatments"
+        title={localSeoTitle("ENT Treatments")}
         subtitle="Comprehensive ENT care for ear, nose, and throat conditions"
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Treatments" },
-        ]}
+        breadcrumbs={breadcrumbs}
       />
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

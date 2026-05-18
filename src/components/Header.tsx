@@ -143,6 +143,7 @@ export function Header() {
                 );
               }
 
+              const Icon = entry.icon;
               return (
                 <div
                   key={entry.label}
@@ -153,11 +154,17 @@ export function Header() {
                   <Link
                     href={entry.href}
                     className={cn(
-                      "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition",
+                      "flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition",
                       megaLinkClass,
                     )}
                     onClick={closeMega}
                   >
+                    <Icon
+                      className={cn(
+                        "h-4 w-4 opacity-70",
+                        overlay && "text-white",
+                      )}
+                    />
                     {entry.label}
                     <ChevronDown
                       className={cn(
@@ -292,6 +299,7 @@ export function Header() {
                 }
 
                 const expanded = mobileExpanded === entry.label;
+                const Icon = entry.icon;
 
                 return (
                   <div key={entry.label} className="mb-2">
@@ -303,7 +311,10 @@ export function Header() {
                       }
                       aria-expanded={expanded}
                     >
-                      <span>{entry.label}</span>
+                      <span className="flex items-center gap-3">
+                        <Icon className="h-5 w-5 text-brand-600" />
+                        {entry.label}
+                      </span>
                       <ChevronDown
                         className={`h-5 w-5 text-slate-400 transition ${expanded ? "rotate-180" : ""}`}
                       />

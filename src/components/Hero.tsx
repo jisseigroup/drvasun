@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Stethoscope } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 import { DoctorImage } from "./DoctorImage";
 
@@ -13,8 +13,7 @@ export function Hero() {
       <div className="relative flex flex-1 items-center justify-center px-4 pb-10 pt-4 sm:px-6 sm:pb-12 sm:pt-0 lg:px-8">
         <div className="mx-auto grid w-fit max-w-full grid-cols-1 items-center gap-[4.06rem] sm:gap-[5.22rem] md:grid-cols-[auto_auto] md:gap-[7.67rem] lg:gap-[8.94rem] xl:gap-[10.23rem]">
           <div className="max-w-[24rem] text-center text-[110%] sm:max-w-[26rem] md:max-w-[26.4rem] md:text-left md:text-[121%] lg:max-w-[28.6rem]">
-            <p className="mb-3 inline-flex max-w-full items-center gap-2 rounded-full bg-white px-3 py-1.5 text-sm font-medium text-brand-600 sm:mb-4 sm:px-4 sm:py-2 sm:text-base">
-              <Stethoscope className="h-4 w-4 shrink-0 text-brand-600" />
+            <p className="mb-3 inline-block max-w-full rounded-full bg-white px-3 py-1.5 text-sm font-medium text-brand-600 sm:mb-4 sm:px-4 sm:py-2 sm:text-base">
               <span className="line-clamp-2 sm:line-clamp-none">
                 {siteConfig.tagline}
               </span>
